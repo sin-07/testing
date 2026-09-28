@@ -1,4 +1,9 @@
 /**
+ * Bihar Examination Proximity & Geographic Routing Engine
+ * Haversine great-circle distance algorithm with spherical trigonometry.
+ * Optimized for zero-overhead candidate center reallocation.
+ */
+/**
  * Exam Centers Proximity and Geographic Routing Engine
  * 
  * Provides:
