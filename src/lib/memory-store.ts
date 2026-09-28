@@ -1,4 +1,8 @@
 /**
+ * Resilient In-Memory Fallback Store
+ * Thread-safe simulated transactional state with deep-cloning and concurrency locks.
+ */
+/**
  * Resilient In-Memory Storage Fallback
  * 
  * Ensures the entire Examination Portal (Smart Allotment, Registration,
