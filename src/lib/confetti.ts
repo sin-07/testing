@@ -1,4 +1,8 @@
 /**
+ * 60FPS Pure Canvas Confetti Engine
+ * Zero external dependencies, self-terminating requestAnimationFrame loop.
+ */
+/**
  * Ultra-lightweight, zero-dependency canvas confetti explosion
  * Runs at smooth 60fps on browser canvas
  */
