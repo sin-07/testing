@@ -155,13 +155,16 @@ export function registerStudentMemory(data: {
   students.push(student);
   global.__memoryStudents = students;
 
+  const appNo = `260310${Math.floor(100000 + Math.random() * 900000)}`;
+
   return {
     success: true,
     message: wasReallocated
       ? `Seat secured! ${reallocationReason}`
-      : 'Registration successful! Preferred center confirmed.',
+      : 'Application submitted successfully! Preferred center confirmed.',
     student_id: student.id,
     roll_number: rollNumber,
+    application_no: appNo,
     allotted_center_id: targetCenter.id,
     allotted_center_name: targetCenter.name,
     allotted_center_code: targetCenter.code || meta?.code,
@@ -170,6 +173,9 @@ export function registerStudentMemory(data: {
     preferred_center: data.selectedCenter,
     distance_km: reallocationDistance,
     reallocation_reason: reallocationReason,
+    exam_shift: 'Shift 1 (09:00 AM – 12:00 PM)',
+    reporting_time: '07:30 AM IST',
+    gate_closing_time: '08:30 AM IST',
   };
 }
 

@@ -64,6 +64,37 @@ export async function registerStudent(formData: FormData): Promise<RegistrationR
     }
   }
 
+  const candidateProfile = {
+    name: data.name,
+    email: data.email,
+    mobile: data.mobile,
+    dob: data.dob,
+    choice1: data.selectedCenter,
+    fatherName: (formData.get('fatherName') as string)?.trim() || '',
+    motherName: (formData.get('motherName') as string)?.trim() || '',
+    gender: (formData.get('gender') as string)?.trim() || 'Male',
+    category: (formData.get('category') as string)?.trim() || 'General',
+    pwdStatus: (formData.get('pwdStatus') as string)?.trim() || 'No',
+    identityType: (formData.get('identityType') as string)?.trim() || 'Aadhaar Card',
+    identityNumber: (formData.get('identityNumber') as string)?.trim() || '',
+    stateOfEligibility: (formData.get('stateOfEligibility') as string)?.trim() || 'Bihar (BH)',
+    nationality: (formData.get('nationality') as string)?.trim() || 'Indian',
+    paper: (formData.get('paper') as string)?.trim() || 'B.E./B.Tech (Paper 1)',
+    medium: (formData.get('medium') as string)?.trim() || 'English',
+    choice2: (formData.get('choice2') as string)?.trim() || '',
+    choice3: (formData.get('choice3') as string)?.trim() || '',
+    choice4: (formData.get('choice4') as string)?.trim() || '',
+    class10Board: (formData.get('class10Board') as string)?.trim() || 'CBSE',
+    class10Year: (formData.get('class10Year') as string)?.trim() || '2023',
+    class10Roll: (formData.get('class10Roll') as string)?.trim() || '',
+    class10Marks: (formData.get('class10Marks') as string)?.trim() || '88.4%',
+    class12Status: (formData.get('class12Status') as string)?.trim() || 'Appearing 2026',
+    class12Board: (formData.get('class12Board') as string)?.trim() || 'CBSE',
+    class12Stream: (formData.get('class12Stream') as string)?.trim() || 'PCM (Physics, Chemistry, Maths)',
+    photoUrl: (formData.get('photoUrl') as string)?.trim() || '',
+    signatureUrl: (formData.get('signatureUrl') as string)?.trim() || '',
+  }
+
   try {
     await connectToDatabase()
 
@@ -192,26 +223,37 @@ export async function registerStudent(formData: FormData): Promise<RegistrationR
       console.error('[EMAIL ERROR]:', err)
     })
 
-    return {
-      success: true,
-      message: wasReallocated
-        ? `Seat secured! ${reallocationReason}`
-        : 'Registration successful! Preferred center confirmed.',
-      student_id: student._id.toString(),
-      roll_number: rollNumber,
-      allotted_center_id: center._id.toString(),
-      allotted_center_name: center.name,
-      allotted_center_code: centerCode,
-      allotted_center_location: centerLocation,
-      was_reallocated: wasReallocated,
-      preferred_center: data.selectedCenter,
-      distance_km: reallocationDistance,
-      reallocation_reason: reallocationReason,
-    }
-  } catch (error) {
-    console.warn('[DB NOTICE]: Atlas connection unavailable, executing via resilient memory fallback store.')
-    return registerStudentMemory(data)
+    const appNumber = `260310${Math.floor(100000 + Math.random() * 900000)}`
+
+  return {
+    success: true,
+    message: wasReallocated
+      ? `Seat secured! ${reallocationReason}`
+      : 'Application submitted successfully! Preferred center confirmed.',
+    student_id: student._id.toString(),
+    roll_number: rollNumber,
+    application_no: appNumber,
+    allotted_center_id: center._id.toString(),
+    allotted_center_name: center.name,
+    allotted_center_code: centerCode,
+    allotted_center_location: centerLocation,
+    was_reallocated: wasReallocated,
+    preferred_center: data.selectedCenter,
+    distance_km: reallocationDistance,
+    reallocation_reason: reallocationReason,
+    exam_shift: 'Shift 1 (09:00 AM – 12:00 PM)',
+    reporting_time: '07:30 AM IST',
+    gate_closing_time: '08:30 AM IST',
+    candidate: candidateProfile,
   }
+} catch (error) {
+  console.warn('[DB NOTICE]: Atlas connection unavailable, executing via resilient memory fallback store.')
+  const memRes = registerStudentMemory(data)
+  return {
+    ...memRes,
+    candidate: candidateProfile,
+  }
+}
 }
 
 /**

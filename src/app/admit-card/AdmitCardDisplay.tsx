@@ -14,6 +14,7 @@
 
 import { useRef, useState } from 'react';
 import { AdmitCardData } from '@/lib/types';
+import { AshokaEmblem } from '@/components/ui/NtaLogo';
 import {
   Download,
   Printer,
@@ -152,24 +153,25 @@ export default function AdmitCardDisplay({ data, onBack }: AdmitCardDisplayProps
 
         <div className="p-6 sm:p-10 flex flex-col justify-between h-full relative z-10">
           <div>
-            {/* Header with National / Portal Emblem */}
+            {/* Header with National Testing Agency Emblem */}
             <div className="border-b-4 border-slate-900 pb-5 mb-6 text-center">
               <div className="flex items-center justify-center gap-4 mb-2">
-                <div className="w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-2xl font-heading shadow-md">
-                  बिहार
-                </div>
+                <AshokaEmblem className="w-16 h-16 shrink-0" color="#0a2540" />
                 <div className="text-left">
-                  <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 uppercase tracking-tight">
-                    Centralized Examination Board
+                  <h1 className="font-heading font-black text-2xl sm:text-3xl text-slate-900 uppercase tracking-tight">
+                    National Testing Agency (NTA)
                   </h1>
-                  <p className="text-xs sm:text-sm font-semibold text-slate-700 tracking-wide uppercase">
-                    Annual Academic Evaluation • Session 2026
+                  <p className="text-xs sm:text-sm font-bold text-slate-800 tracking-wide">
+                    राष्ट्रीय परीक्षा एजेंसी • Ministry of Education, Government of India
+                  </p>
+                  <p className="text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                    Joint Entrance Examination (Main) - 2026 • Session 1
                   </p>
                 </div>
               </div>
 
-              <div className="mt-3 inline-block bg-slate-900 text-white px-6 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
-                Official Candidate Admit Card / Hall Ticket
+              <div className="mt-3 inline-block bg-slate-900 text-white px-8 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm">
+                Official Admit Card / Hall Ticket (Computer Based Test)
               </div>
             </div>
 

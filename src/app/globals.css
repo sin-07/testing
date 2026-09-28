@@ -59,6 +59,30 @@ h1, h2, h3, .font-heading {
   .glow-emerald {
     box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.35);
   }
+
+  /* NTA JEE Portal Tokens */
+  .nta-navy-gradient {
+    background: linear-gradient(135deg, #0b1f3a 0%, #0f2b48 50%, #16385c 100%);
+  }
+
+  .nta-badge {
+    background: #eef2ff;
+    color: #1e3a8a;
+    border: 1px solid #c7d2fe;
+  }
+
+  .captcha-box {
+    background: repeating-linear-gradient(
+      45deg,
+      #f8fafc,
+      #f8fafc 10px,
+      #e2e8f0 10px,
+      #e2e8f0 20px
+    );
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    letter-spacing: 0.35em;
+    user-select: none;
+  }
 }
 
 /* Custom component styles */

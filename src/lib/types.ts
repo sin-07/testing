@@ -77,12 +77,66 @@ export type ExamCenter = typeof EXAM_CENTERS[number];
 // Form & API Types
 // ============================================================
 
+export interface NtaCandidateProfile {
+  name: string;
+  fatherName?: string;
+  motherName?: string;
+  dob: string;
+  gender?: string;
+  category?: string;
+  pwdStatus?: string;
+  identityType?: string;
+  identityNumber?: string;
+  stateOfEligibility?: string;
+  nationality?: string;
+  email: string;
+  mobile: string;
+  paper?: string;
+  medium?: string;
+  choice1: string;
+  choice2?: string;
+  choice3?: string;
+  choice4?: string;
+  class10Board?: string;
+  class10Year?: string;
+  class10Roll?: string;
+  class10Marks?: string;
+  class12Status?: string;
+  class12Board?: string;
+  class12Stream?: string;
+  photoUrl?: string;
+  signatureUrl?: string;
+}
+
 export interface RegistrationFormData {
   name: string;
   email: string;
   mobile: string;
   dob: string;
   selectedCenter: string;
+  fatherName?: string;
+  motherName?: string;
+  gender?: string;
+  category?: string;
+  pwdStatus?: string;
+  identityType?: string;
+  identityNumber?: string;
+  stateOfEligibility?: string;
+  nationality?: string;
+  paper?: string;
+  medium?: string;
+  choice2?: string;
+  choice3?: string;
+  choice4?: string;
+  class10Board?: string;
+  class10Year?: string;
+  class10Roll?: string;
+  class10Marks?: string;
+  class12Status?: string;
+  class12Board?: string;
+  class12Stream?: string;
+  photoUrl?: string;
+  signatureUrl?: string;
 }
 
 export interface RegistrationResult {
@@ -90,6 +144,7 @@ export interface RegistrationResult {
   message: string;
   student_id?: string;
   roll_number?: string;
+  application_no?: string;
   allotted_center_id?: string;
   allotted_center_name?: string;
   allotted_center_code?: string;
@@ -98,6 +153,10 @@ export interface RegistrationResult {
   preferred_center?: string;
   distance_km?: number;
   reallocation_reason?: string;
+  exam_shift?: string;
+  reporting_time?: string;
+  gate_closing_time?: string;
+  candidate?: NtaCandidateProfile;
 }
 
 export interface AdmitCardData {
