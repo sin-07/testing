@@ -1,4 +1,8 @@
 /**
+ * Candidate Registration Validation & Sanitization Layer
+ * Strict schema enforcement for phone numbers, email format, and age limits.
+ */
+/**
  * Validation Schemas using Zod
  * Provides type-safe form validation for all user inputs
  */
